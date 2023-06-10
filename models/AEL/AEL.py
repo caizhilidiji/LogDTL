@@ -189,7 +189,7 @@ class LogParser():
 
     def log_to_dataframe(self, log_file, regex, headers, logformat):
         ''' Function to transform log file to dataframe '''
-        print("4. Start Log data to dataframe")
+        print("4. Start Log originData to dataframe")
         log_messages = []
         linecount = 0
         with open(log_file, 'r') as fin:

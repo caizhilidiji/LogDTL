@@ -100,7 +100,7 @@ def make_train_and_test_datafile(input_path, output_paths, test_size=0.3):
     df = df[[Config.FILE_HEADER_CONTENT, Config.FILE_HEADER_EVENT_ID, Config.FILE_HEADER_EVENT_TEMPLATE, Config.FILE_HEADER_EVENT_STR]]
     df.to_csv(output_paths[0], index=False)  # Content, EventId, EventTemplate, EventStr
 
-    # Shuffle data to split train and test
+    # Shuffle originData to split train and test
     df = df.sample(frac=1)
     if 0 < test_size < 1:
         num_train = df.shape[0] - int(df.shape[0] * test_size)

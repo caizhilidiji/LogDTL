@@ -264,7 +264,7 @@ class PositionalEncoding(nn.Module):
 
 
 class Batch:
-    "Object for holding a batch of data with mask during training."
+    "Object for holding a batch of originData with mask during training."
 
     def __init__(self, src, trg=None, pad=0):
         self.src = src

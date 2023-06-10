@@ -66,7 +66,7 @@ class Config:
     # This config for transfer models
     TRANSFER_PARAS = {
         "1": {
-            # [source, target]: We use all available data in source task for training, and labelling_rate in target task
+            # [source, target]: We use all available originData in source task for training, and labelling_rate in target task
             "label_rate": [1.0, 1],
             "batch_size_train": [100, 1],
             "batch_size_test": [200, 200],

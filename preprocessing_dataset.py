@@ -10,7 +10,7 @@
 from models.utils.dataset_util import make_train_and_test_datafile
 from config import Config
 
-# =========================== Making training and testing dataset for both open-source data and proprietary data
+# =========================== Making training and testing dataset for both open-source originData and proprietary originData
 
 # Linux
 output_linux = [Config.LINUX_TRAIN_TEST, Config.LINUX_TRAIN, Config.LINUX_TEST]

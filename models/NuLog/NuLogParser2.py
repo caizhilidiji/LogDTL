@@ -268,7 +268,7 @@ class PositionalEncoding(nn.Module):
 
 
 class Batch:
-    """ Object for holding a batch of data with mask during training. """
+    """ Object for holding a batch of originData with mask during training. """
 
     def __init__(self, src, trg=None, pad=0):
         self.src = src
@@ -328,7 +328,7 @@ class MaskedDataset(Dataset):
         self.tokenizer = tokenizer
 
         self.token_id = self.tokenizer.tokenize('<MASK>')[0]
-        print("6. Padded data: {}".format(self.padded_data))
+        print("6. Padded originData: {}".format(self.padded_data))
 
     def get_sample_weights(self):
         def changeTokenToCount(token, dictInfo):
@@ -436,7 +436,7 @@ class LogParser:
         return headers, regex
 
     def load_data(self):
-        """ Function to load log data to dataframe """
+        """ Function to load log originData to dataframe """
         headers, regex = self.generate_logformat_regex(self.log_format)
         log_messages = []
         linecount = 0
