@@ -1,5 +1,7 @@
 import time
 
+from dataPreprocess.getTrainAndTestLogs import templatesDic
+
 
 def is_valid_date(strdate):
     '''
@@ -12,5 +14,10 @@ def is_valid_date(strdate):
     except:
         return False
 
+
 if __name__ == '__main__':
-    print(is_valid_date('2023-06-09 23:19:27.586523'))
+    import pandas as pd
+
+    data = {'Name': ['Alice', 'Bob', 'Charlie'], 'Age': [25, 30, 35]}
+    df = pd.DataFrame(data)
+    df.to_csv('output.csv', index=False)
