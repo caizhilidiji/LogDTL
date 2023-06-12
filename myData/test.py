@@ -1,6 +1,6 @@
 import time
 
-from dataPreprocess.getTrainAndTestLogs import templatesDic
+from myData.getTrainAndTestLogs import templatesDic
 
 
 def is_valid_date(strdate):

@@ -30,6 +30,23 @@ DATASET_GROUNDTRUTH = {
     # "windows": Config.WINDOWS_TEST
 }
 
+# 利用dnn模型做日志模板提取
+def dnn_extraction(model, wx, y, m, twx, ty, tm, wx_test, y_test, m_test, twx_test, ty_test, tm_test,
+                   char_index, char_cnt, word_index, word_cnt, word2vec_embedding):
+    # Train the model
+    start = time()
+    model.fit(wx, y, m, char_index, char_cnt, word_index, word_cnt, word2vec_embedding)
+    end = time()
+    print(f"Training time: {end - start}")
+
+    # Measure the performance
+    start = time()
+    performance_results = measurement(model, wx, y, m, twx, ty, tm, wx_test, y_test, m_test, twx_test, ty_test, tm_test,
+                                      char_index, char_cnt, word_index, word_cnt, word2vec_embedding)
+    end = time()
+    print(f"Measurement time: {end - start}")
+
+    return performance_results
 
 for data_name, data_list in DATASETS.items():
     pathsave = f"{Config.RESULTS_DATA}/{data_name}/dnn"

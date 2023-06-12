@@ -3,7 +3,7 @@ import difflib
 import time
 from getTrainAndTestLogs import *
 
-file = r'D:\Study_笔记\研究生毕业设计\code\LogDTL\dataPreprocess\originData'
+file = r'/myData\originData'
 
 
 def getLogs(file, path, save):
@@ -100,7 +100,7 @@ def getSysLog(lines):
 
 if __name__ == '__main__':
     # print(templatesDic)
-    # getSnortLog(f'D:\Study_笔记\研究生毕业设计\code\LogDTL\dataPreprocess\originData\\net_1686320048.032491\\alert')
+    # getSnortLog(f'D:\Study_笔记\研究生毕业设计\code\LogDTL\myData\originData\\net_1686320048.032491\\alert')
     # https://blog.csdn.net/sazass/article/details/98071353
     for root, dirs, files in os.walk(file):
         for file in files:

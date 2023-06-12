@@ -29,6 +29,26 @@ DATASET_GROUNDTRUTH = {
 }
 ALGORITHMS = ["lbfgs"]
 
+# 利用crf模型做日志模板提取
+def crf_log_template(data_name, data_list, algorithm):
+    X_train, y_train = create_features_labels(data_list[0])
+    X_test, y_test = create_features_labels(data_list[1])
+    model = Model(algorithm=algorithm)
+
+    ind = sample.create_sample_index(Config.LABELING_RATE, len(X_train))
+    X, y = sample.sample_arrays((X_train, y_train), ind)
+
+    model.train(X, y)
+    model.predict(X_test, y_test, DATASET_GROUNDTRUTH[data_name])
+    WA, TWA, rand_score, precision, recall, f_score, PA, CA, ESM, dist_mean, dist_std, TA = \
+        measurement(DATASET_GROUNDTRUTH[data_name], f"{Config.RESULTS_DATA}/{data_name}/crf/{Config.FILE_SAVE_PREDICTION}")
+    print(f"WA: {WA}, TWA: {TWA}, rand_score: {rand_score}, precision: {precision}, recall: {recall}, f_score: {f_score}, "
+          f"PA: {PA}, CA: {CA}, ESM: {ESM}, dist_mean: {dist_mean}, dist_std: {dist_std}, TA: {TA}")
+    print(f"time_train: {model.time_train}, time_test: {model.time_test}")
+    return WA, TWA, rand_score, precision, recall, f_score, PA, CA, ESM, dist_mean, dist_std, TA, model.time_train, model.time_test
+
+
+
 
 if __name__ == '__main__':
 
